@@ -23,24 +23,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   {{-- @foreach ($categories as $data)
+                                   @foreach ($brands as $data)
                                         <tr>
                                             <td>{{$data->id}}</td>
                                             <td>{{$data->name}}</td>
                                             <td>
-                                                <a href="{{route('categories.edit',$data->id)}}" class="btn btn-success btn-sm">
+                                                <a href="{{route('brands.edit',$data->id)}}" class="btn btn-success btn-sm">
                                                     <i class="fa fa-edit"></i>Edit
                                                 </a>
                                                 <a href="javascript:;" class="btn btn-danger btn-sm sa-delete" data-form-id="{{$data->id}}">
                                                     <i class="fa fa-trash"></i>Delete</a>
 
-                                                <form id="{{$data->id}}" action="{{route('categories.destroy',$data->id)}}" method="POST">
+                                                <form id="{{$data->id}}" action="{{route('brands.destroy',$data->id)}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
                                             </td>
                                         </tr>
-                                   @endforeach --}}
+                                   @endforeach
                                 </tbody>
 
                             </table>

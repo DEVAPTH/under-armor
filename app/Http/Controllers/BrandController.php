@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BrandController extends Controller
 {
@@ -13,7 +15,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        return view('brands.detail');
+       $brands = Brand::all();
+        return view('brands.detail',compact('brands'));
     }
 
     /**
@@ -23,7 +26,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('brands.create');
     }
 
     /**
@@ -34,7 +37,15 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Validator::make($request->all(), [
+            'name' => 'required|unique:brands|max:255',
+        ]);
+
+        Brand::create([
+            'name'=>$request->name
+        ]);
+        flash('Brand created Successfull')->success();
+        return back();
     }
 
     /**
@@ -56,7 +67,8 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        //
+        $brands = Brand::findOrFail($id);
+        return view('brands.edit',compact('brands'));
     }
 
     /**

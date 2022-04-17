@@ -33,6 +33,5 @@ Route::middleware(['auth:sanctum'])->group(function(){
     //Brand
     Route::resource('brands',BrandController::class);
 
-
 });
 
